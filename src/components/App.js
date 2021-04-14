@@ -75,7 +75,7 @@ function App() {
                 if (data.auth_token) {
                     handleLoggedIn();
                     localStorage.setItem('token', data.auth_token);
-                    history.push('/');
+                    history.push('/x-lab_test/');
                 }
             })
             .catch(err => {
@@ -94,7 +94,7 @@ function App() {
                 localStorage.removeItem('token');
                 console.log(localStorage.removeItem('token'))
                 setLoggedIn(false);
-                history.push('/login');
+                history.push('/x-lab_test/login');
                 console.log(response + '1')
             })
 
@@ -137,14 +137,14 @@ function App() {
                 <div className="page">
                     <Header token={token} onSignOut={handleSignOut}/>
                     <Switch>
-                        <Route exact path="/">
-                            {loggedIn ? <Redirect to="/"/> : <Redirect to="/login"/>}
-                            <ProtectedRoute exact path="/" users={allUser} loggedIn={loggedIn} component={Main}
+                        <Route exact path="/x-lab_test/">
+                            {loggedIn ? <Redirect to="/x-lab_test"/> : <Redirect to="/x-lab_test/login"/>}
+                            <ProtectedRoute exact path="/x-lab_test/" users={allUser} loggedIn={loggedIn} component={Main}
                                             onIdClick={handleSortId} onUsernameClick={handleSortUsername}
                             />
                         </Route>
 
-                        <Route path="/login">
+                        <Route path="/x-lab_test/login">
                             <Login handleLogin={handleLogin}/>
                         </Route>
                     </Switch>

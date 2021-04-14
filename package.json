@@ -5,6 +5,10 @@
   "version": "0.1.0",
   "homepage": "https://barrrsss.github.io/x-lab_test",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Barrrsss/x-lab_test.git"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
