@@ -71,6 +71,7 @@ function App() {
     // //обработчик авторизации пользователя
     function handleLogin(password, username) {
         auth.authorize(password, username)
+
             .then(data => {
                 if (data.auth_token) {
                     handleLoggedIn();
