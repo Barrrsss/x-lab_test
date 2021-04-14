@@ -4,13 +4,9 @@ import {useState, useEffect} from 'react'
 import Header from './Header'
 import Main from './Main'
 import Footer from './Footer'
-import ImagePopup from './ImagePopup'
 import ESC_KEYCODE from '../utils/keycode'
 import api from "../utils/api";
 import {UserContext} from '../contexts/CurrentUserContext'
-import EditProfilePopup from './EditProfilePopup'
-import EditAvatarPopup from './EditAvatarPopup'
-import AddPlacePopup from './AddPlacePopup'
 import * as auth from '../utils/auth';
 import ProtectedRoute from './ProtectedRoute';
 import InfoTooltip from './InfoTooltip';
@@ -109,10 +105,16 @@ function App() {
 
     //обработчик выхода пользователя
     function handleSignOut() {
-        localStorage.removeItem('token');
-        console.log(localStorage.removeItem('token'))
-        setLoggedIn(false);
-        history.push('/login');
+        const token = localStorage.getItem('token');
+        auth.logout(token)
+            .then(response => {
+                localStorage.removeItem('token');
+                console.log(localStorage.removeItem('token'))
+                setLoggedIn(false);
+                history.push('/login');
+                console.log(response + '1')
+            })
+
     }
 
 
@@ -138,7 +140,7 @@ function App() {
                     <Switch>
                         <Route exact path="/">
                             {loggedIn ? <Redirect to="/"/> : <Redirect to="/login"/>}
-                            <ProtectedRoute exact path="/" loggedIn={loggedIn} component={Main} />
+                            <ProtectedRoute exact path="/" users={allUser} loggedIn={loggedIn} component={Main} />
                         </Route>
 
                         <Route path="/login">

@@ -17,6 +17,17 @@ export const authorize = (password, username) => {
         })
 }
 
+export const logout = (token) => {
+    return fetch(`${BASE_URL}/token/logout`, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': `Token ${token}`,
+        }
+    })
+}
+
 export const getContent = (token) => {
     console.log(token)
     return fetch(`${BASE_URL}/users`, {

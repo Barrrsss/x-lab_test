@@ -5,10 +5,7 @@ function Header({token, onSignOut}) {
     return (
         <header className="header">
                 <Route path="/login">
-                    <Link to='sign-up' className='header__auth_link'>Тестовое задание</Link>
-                </Route>
-                <Route path="/sign-up">
-                    <Link to='login' className='header__auth_link'>Войти</Link>
+                    <p className='header__title'>Тестовое задание</p>
                 </Route>
                 <Route exact path="/">
                         <p className='header__email'>Auth token: {token}</p>
