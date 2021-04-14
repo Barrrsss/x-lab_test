@@ -1,0 +1,29 @@
+.table__head {
+    color: white;
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 24px;
+    line-height: 26px;
+    font-weight: 500;
+    border: 1px solid white;
+}
+td {
+    border: 1px solid grey;
+    text-align: center;
+}
+th {
+    border: 1px solid white;
+    padding: 4px;
+    text-align: center;
+}
+@media screen and (max-width: 920px) {
+    .table__head {
+        font-size: 20px;
+        line-height: 22px;
+    }
+}
+@media screen and (max-width: 560px) {
+    .table__head {
+        font-size: 14px;
+        line-height: 16px;
+    }
+}

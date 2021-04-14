@@ -1,0 +1,19 @@
+.table__subtitle {
+    color: white;
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 28px;
+    line-height: 38px;
+    font-weight: 900;
+}
+@media screen and (max-width: 920px) {
+    .table__subtitle {
+        font-size: 20px;
+        line-height: 22px;
+    }
+}
+@media screen and (max-width: 560px) {
+    .table__subtitle {
+        font-size: 14px;
+        line-height: 16px;
+    }
+}

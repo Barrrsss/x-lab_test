@@ -6,7 +6,6 @@ import Main from './Main'
 import Footer from './Footer'
 import ESC_KEYCODE from '../utils/keycode'
 import api from "../utils/api";
-import {UserContext} from '../contexts/CurrentUserContext'
 import * as auth from '../utils/auth';
 import ProtectedRoute from './ProtectedRoute';
 import InfoTooltip from './InfoTooltip';
@@ -14,38 +13,23 @@ import Login from './Login';
 
 
 function App() {
-    const [allUser, setAllUser] = useState({
-        id: '',
-        last_login: '',
-        is_superuser: '',
-        username: '',
-        first_name: '',
-        last_name: '',
-        email: '',
-        is_staff: '',
-        is_active: '',
-        date_joined: '',
-        groups: [],
-        user_permissions: []
-    });
+    const [allUser, setAllUsers] = useState([]);
 
 
     //попапы
     const [isTooltipOpen, setIsTooltipOpen] = useState(false);
-    const [isSucessTooltip, setIsSucessTooltip] = useState(false);
     //авторизация
     const [loggedIn, setLoggedIn] = useState(false);
     const [token, setToken] = useState('');
     const history = useHistory();
 
-    //получаем информацию о карточках и пользователе
+    //получаем информацию пользователях
     useEffect(() => {
         if (loggedIn) {
             api.getAllData()
                 .then((response => {
-                    console.log(response);
                     const [userData] = response;
-                    setAllUser (userData);
+                    setAllUsers (userData);
                 }))
                 .catch((err) => {
                     console.log(err);
@@ -70,7 +54,7 @@ function App() {
                 })
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [history]);
+    }, []);
 
     //закрытие попапа по оверлею
     function handleOverlayClose(evt) {
@@ -85,8 +69,8 @@ function App() {
     }
 
     // //обработчик авторизации пользователя
-    function handleLogin(password, email) {
-        auth.authorize(password, email)
+    function handleLogin(password, username) {
+        auth.authorize(password, username)
             .then(data => {
                 if (data.auth_token) {
                     handleLoggedIn();
@@ -96,7 +80,6 @@ function App() {
             })
             .catch(err => {
                 setIsTooltipOpen(true);
-                setIsSucessTooltip(false);
                 setTimeout(() =>
                     setIsTooltipOpen(false), 2000);
                 console.log(err);
@@ -118,7 +101,6 @@ function App() {
     }
 
 
-    //функционал для открытия и закрытия попапов
 
     function closeAllPopups() {
         setIsTooltipOpen(false);
@@ -131,16 +113,35 @@ function App() {
         }
     }
 
+    //сортировка
+
+    const [sortFromId, setSortFromId] = React.useState(true);
+    const [sortFromUsername, setSortFromUsername] = React.useState(true);
+
+
+    function handleSortId() {
+        sortFromId
+            ? setAllUsers([...allUser.sort((a, b) => a.id - b.id)])
+            : setAllUsers([...allUser.sort((a, b) => b.id - a.id)]);
+        setSortFromId(!sortFromId);
+    }
+    function handleSortUsername() {
+        sortFromUsername
+            ? setAllUsers([...allUser.sort((a, b) => (a.username > b.username ? 1 : -1))])
+            : setAllUsers([...allUser.sort((a, b) => (a.username < b.username ? 1 : -1))]);
+        setSortFromUsername(!sortFromUsername);
+    }
 
     return (
-        <UserContext.Provider value={allUser}>
             <div className="body" onKeyDown={onKeyPressed} tabIndex="0">
                 <div className="page">
                     <Header token={token} onSignOut={handleSignOut}/>
                     <Switch>
                         <Route exact path="/">
                             {loggedIn ? <Redirect to="/"/> : <Redirect to="/login"/>}
-                            <ProtectedRoute exact path="/" users={allUser} loggedIn={loggedIn} component={Main} />
+                            <ProtectedRoute exact path="/" users={allUser} loggedIn={loggedIn} component={Main}
+                                            onIdClick={handleSortId} onUsernameClick={handleSortUsername}
+                            />
                         </Route>
 
                         <Route path="/login">
@@ -149,11 +150,10 @@ function App() {
                     </Switch>
                     <Footer/>
 
-                    <InfoTooltip isTooltipStatus={isSucessTooltip}  isOpen={isTooltipOpen}
+                    <InfoTooltip isOpen={isTooltipOpen}
                                  onClose={closeAllPopups} onPopupOverlayClose={handleOverlayClose}/>
                 </div>
             </div>
-        </UserContext.Provider>
 
     );
 }
