@@ -15,7 +15,8 @@ import Login from './Login';
 function App() {
     const [allUser, setAllUsers] = useState([]);
 
-    //попап ошибки
+
+    //попапы
     const [isTooltipOpen, setIsTooltipOpen] = useState(false);
     //авторизация
     const [loggedIn, setLoggedIn] = useState(false);
@@ -70,12 +71,11 @@ function App() {
     // //обработчик авторизации пользователя
     function handleLogin(password, username) {
         auth.authorize(password, username)
-
             .then(data => {
                 if (data.auth_token) {
                     handleLoggedIn();
                     localStorage.setItem('token', data.auth_token);
-                    history.push('/x-lab_test/');
+                    history.push('/');
                 }
             })
             .catch(err => {
@@ -94,11 +94,13 @@ function App() {
                 localStorage.removeItem('token');
                 console.log(localStorage.removeItem('token'))
                 setLoggedIn(false);
-                history.push('/x-lab_test/login');
+                history.push('/login');
                 console.log(response + '1')
             })
 
     }
+
+
 
     function closeAllPopups() {
         setIsTooltipOpen(false);
@@ -135,14 +137,14 @@ function App() {
                 <div className="page">
                     <Header token={token} onSignOut={handleSignOut}/>
                     <Switch>
-                        <Route exact path="/x-lab_test/">
-                            {loggedIn ? <Redirect to="/x-lab_test"/> : <Redirect to="/x-lab_test/login"/>}
-                            <ProtectedRoute exact path="/x-lab_test/" users={allUser} loggedIn={loggedIn} component={Main}
+                        <Route exact path="/">
+                            {loggedIn ? <Redirect to="/"/> : <Redirect to="/login"/>}
+                            <ProtectedRoute exact path="/" users={allUser} loggedIn={loggedIn} component={Main}
                                             onIdClick={handleSortId} onUsernameClick={handleSortUsername}
                             />
                         </Route>
 
-                        <Route path="/x-lab_test/login">
+                        <Route path="/login">
                             <Login handleLogin={handleLogin}/>
                         </Route>
                     </Switch>
