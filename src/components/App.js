@@ -15,8 +15,7 @@ import Login from './Login';
 function App() {
     const [allUser, setAllUsers] = useState([]);
 
-
-    //попапы
+    //попап ошибки
     const [isTooltipOpen, setIsTooltipOpen] = useState(false);
     //авторизация
     const [loggedIn, setLoggedIn] = useState(false);
@@ -100,8 +99,6 @@ function App() {
             })
 
     }
-
-
 
     function closeAllPopups() {
         setIsTooltipOpen(false);
