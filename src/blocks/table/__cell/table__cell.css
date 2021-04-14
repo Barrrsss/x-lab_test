@@ -1,0 +1,7 @@
+.table__cell {
+    color: white;
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 24px;
+    line-height: 26px;
+    border: 1px solid white;
+}

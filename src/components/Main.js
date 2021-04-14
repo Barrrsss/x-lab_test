@@ -1,17 +1,22 @@
-import React, {useContext} from "react";
-import {UserContext} from "../contexts/CurrentUserContext";
+import React from "react";
+import Id from "./Id";
+import Username from "./Username";
+import Table from "./Table";
 
 function Main(props) {
-
-    const currentUser = useContext(UserContext);
     return (
-        <main className="content">
-            <section className="elements">
-                <ul className="elements__list">
-                </ul>
-            </section>
-        </main>
+        <div className="table">
+            <h1 className="table__title">Список пользователей</h1>
+            <h2 className="table__subtitle">Сортировка по:</h2>
+            <div className="table__buttons">
+                <Id sortId={props.onIdClick} />
+                <Username sortName={props.onUsernameClick} />
+            </div>
+            <Table data={props.users} />
+
+        </div>
     );
+
 }
 
 export default Main

@@ -1,0 +1,18 @@
+.table__button {
+    width: 150px;
+    height: 30px;
+    margin-right: 20px;
+    border: none;
+    background-color: #61dafb;
+}
+
+.table__button:last-child {
+    margin-right: 0;
+    margin-top: 10px;
+}
+@media screen and (max-width: 920px) {
+    .table__button {
+        width: 100px;
+        line-height: 22px;
+    }
+}
