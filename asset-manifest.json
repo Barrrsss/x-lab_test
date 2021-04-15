@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.7f55f955.chunk.css",
-    "main.js": "/static/js/main.7511cc41.chunk.js",
-    "main.js.map": "/static/js/main.7511cc41.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.2c9adc49.js",
-    "runtime-main.js.map": "/static/js/runtime-main.2c9adc49.js.map",
-    "static/js/2.6380e617.chunk.js": "/static/js/2.6380e617.chunk.js",
-    "static/js/2.6380e617.chunk.js.map": "/static/js/2.6380e617.chunk.js.map",
-    "static/js/3.f9fbba6e.chunk.js": "/static/js/3.f9fbba6e.chunk.js",
-    "static/js/3.f9fbba6e.chunk.js.map": "/static/js/3.f9fbba6e.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/main.7f55f955.chunk.css.map": "/static/css/main.7f55f955.chunk.css.map",
-    "static/js/2.6380e617.chunk.js.LICENSE.txt": "/static/js/2.6380e617.chunk.js.LICENSE.txt",
-    "static/media/index.css": "/static/media/close-icon.b9c42c3d.svg",
-    "static/media/fail.d4ce2a26.svg": "/static/media/fail.d4ce2a26.svg",
-    "static/media/sucess.a9eb6caf.svg": "/static/media/sucess.a9eb6caf.svg"
+    "main.css": "/x-lab_test/static/css/main.d6884fd8.chunk.css",
+    "main.js": "/x-lab_test/static/js/main.7511cc41.chunk.js",
+    "main.js.map": "/x-lab_test/static/js/main.7511cc41.chunk.js.map",
+    "runtime-main.js": "/x-lab_test/static/js/runtime-main.065e13d7.js",
+    "runtime-main.js.map": "/x-lab_test/static/js/runtime-main.065e13d7.js.map",
+    "static/js/2.6380e617.chunk.js": "/x-lab_test/static/js/2.6380e617.chunk.js",
+    "static/js/2.6380e617.chunk.js.map": "/x-lab_test/static/js/2.6380e617.chunk.js.map",
+    "static/js/3.f9fbba6e.chunk.js": "/x-lab_test/static/js/3.f9fbba6e.chunk.js",
+    "static/js/3.f9fbba6e.chunk.js.map": "/x-lab_test/static/js/3.f9fbba6e.chunk.js.map",
+    "index.html": "/x-lab_test/index.html",
+    "static/css/main.d6884fd8.chunk.css.map": "/x-lab_test/static/css/main.d6884fd8.chunk.css.map",
+    "static/js/2.6380e617.chunk.js.LICENSE.txt": "/x-lab_test/static/js/2.6380e617.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/x-lab_test/static/media/close-icon.b9c42c3d.svg",
+    "static/media/fail.d4ce2a26.svg": "/x-lab_test/static/media/fail.d4ce2a26.svg",
+    "static/media/sucess.a9eb6caf.svg": "/x-lab_test/static/media/sucess.a9eb6caf.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.2c9adc49.js",
+    "static/js/runtime-main.065e13d7.js",
     "static/js/2.6380e617.chunk.js",
-    "static/css/main.7f55f955.chunk.css",
+    "static/css/main.d6884fd8.chunk.css",
     "static/js/main.7511cc41.chunk.js"
   ]
 }
