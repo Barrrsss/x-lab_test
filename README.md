@@ -6,7 +6,7 @@ SPA - приложение с адаптивной версткой, где бу
 
 ### `npm start`
 
-Запускат приложение на [http://localhost:3000](http://localhost:3000)
+Запускает приложение на [http://localhost:3000](http://localhost:3000)
 
 ### `npm deploy`
 
